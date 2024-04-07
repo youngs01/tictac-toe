@@ -47,3 +47,35 @@ h1 {
     font-weight: 700;
     letter-spacing: 6px;
 }
+
+.accordion-btn{
+    width: 300px;
+}
+
+.accordion-header i {
+    font-size: 20px;
+/* background-color: blue; */
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.border-right{
+    border-right: 1px solid white;
+}
+
+.score{
+    color: white;
+    font-size: 25px;
+}
+
+
+
+
+
+
+
+
+

@@ -13,14 +13,39 @@
     <script src="https://kit.fontawesome.com/0a7c965840.js" crossorigin="anonymous"></script>
     <title>Tic Tac Toe</title>
 </head>
-<style>
-  
-</style>
-
 <body>
+    
+    <div class="">
+        <div class="accordion accordion-flush w-100" id="accordionFlushExample">
+            <div class="accordion-item bg-transparent border-0 text-white">
+              <h2 class="accordion-header w-100 bg-transparent border-0 d-flex align-items-center justify-content-between gap-5">
+                score board <i data-bs-toggle="tooltip" data-bs-placement="top" 
+                data-bs-title="Tooltip on top" class="fas fa-xmark"></i>
+                <!-- <button class="accordion-btn collapsed d-flex align-items-center border-0 
+                 justify-content-between bg-transparent text-light fw-semibold " type="button" 
+                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                 aria-expanded="false" aria-controls="flush-collapseOne">
+                  Score Board <i class="fas fa-chevron-down"></i>
+                </button> -->
+              </h2>
+              <div id="flush-collapseOne" class=" pt-3 accordion-collapse collapse show " data-bs-parent="#accordionFlushExample">
+            <div class="row py-3 border-top border-bottom">
+                <div class="col-6 p-0  d-flex flex-column align-items-center justify-content-center border-right border-right ">
+                    <h3 class="text-light">X</h3>
+                    <div class="score-x score d-flex align-items-center justify-content-center w-100">0</div>
+                </div>
+                <div class="col-6 p-0 d-flex flex-column align-items-center justify-content-center">
+                    <h3 class="text-light">O</h3>
+                    <div class="score-0 d-flex align-items-center justify-content-center  score w-100">0</div>
+                </div>
+            </div>   
+            </div>
+            </div>
+       
+          </div>
+    </div>
 
     <h1 class="text-white result">Winner is </h1>
-
     <div class="game-div">
         <button class="box border-0 rounded-top box1"></button>
         <button class="box border-0 box2"></button>
@@ -32,8 +57,9 @@
         <button class="box border-0 box8"></button>
         <button class="box border-0 rounded-bottom box9"></button>
     </div>
-
     <button onclick="reset()" class="bg-white text-danger border-0 fw-bold px-5 py-2 rounded">Reset Game</button>
+
+    
 
     <script src="index.js"></script>
 </body>

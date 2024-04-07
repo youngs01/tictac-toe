@@ -1,5 +1,7 @@
 const boxes = document.querySelectorAll(".box");
 const resultElement = document.querySelector(".result");
+const score0 = document.querySelector(".score-0");
+const scorex = document.querySelector(".score-x")
 var turnO = true;
 
 let gamePattern = [
@@ -38,12 +40,38 @@ function winCheck() {
 
         if (pat1 != "" && pat2 != "" && pat3 != "") {
             if (pat1 == pat2 && pat2 == pat3) {
-                resultElement.innerText = `Winner is ${pat1}`
-
+                resultElement.innerText = `Winner is ${pat1}`;
+                if (pat1 === "X") {
+                    console.log("x");
+                    let currentScorex = parseInt(scorex.textContent)
+                    scorex.textContent = currentScorex + 1;
+                } else {
+                    console.log("bye");
+                    let currentScoreo = parseInt(score0.textContent)
+                    score0.textContent = currentScoreo + 1;
+                }
+                boxes.forEach((box) => {
+                    box.disabled = true;
+                })
             }
         }
     }
-}
+ }
+
+ document.addEventListener("click", function(click) {
+    if (click.target.classList.contains("fa-xmark")) {
+        score0.textContent = 0;
+        scorex.textContent = 0
+        boxes.forEach((box) => {
+            box.innerText = "";
+            resultElement.innerText = "winner is"
+            box.disabled = false
+        });
+        turnO = true;
+
+    }
+});
+
 
 function reset() {
     boxes.forEach((box) => {
