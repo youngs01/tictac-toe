@@ -2,6 +2,7 @@ const boxes = document.querySelectorAll(".box");
 const resultElement = document.querySelector(".result");
 const score0 = document.querySelector(".score-0");
 const scorex = document.querySelector(".score-x")
+const gameDiv = document.querySelector(".game-div");
 var turnO = true;
 
 let gamePattern = [
@@ -15,22 +16,38 @@ let gamePattern = [
     [6, 7, 8],
 ];
 
+
+
+function toggleBorderColor() {
+    boxes.forEach((box) => {
+        if (turnO) {
+            box.classList.add("border-blue");
+            box.classList.remove("border-red");
+        } else {
+            box.classList.remove("border-blue");
+            box.classList.add("border-red");
+        }
+    });
+}
+
+toggleBorderColor();
+
 boxes.forEach((box) => {
     box.addEventListener("click", function () {
         if (turnO) {
-            box.style.color = "blue"
+            box.style.color = "blue";
             box.innerText = "O";
             turnO = false;
-        }
-        else {
+        } else {
             box.style.color = "red";
             box.innerText = "X";
             turnO = true;
         }
         box.disabled = true;
-        winCheck()
-    })
-})
+        winCheck();
+         toggleBorderColor();
+    });
+});
 
 function winCheck() {
     for (let pattern of gamePattern) {
@@ -56,18 +73,18 @@ function winCheck() {
             }
         }
     }
- }
+}
 
- document.addEventListener("click", function(click) {
+document.addEventListener("click", function (click) {
     if (click.target.classList.contains("fa-xmark")) {
         score0.textContent = 0;
         scorex.textContent = 0
         boxes.forEach((box) => {
             box.innerText = "";
-            resultElement.innerText = "winner is"
+            resultElement.innerText = "Winner is"
             box.disabled = false
         });
-        turnO = true;
+        // turnO = true;
 
     }
 });
@@ -79,6 +96,6 @@ function reset() {
         resultElement.innerText = "winner is"
         box.disabled = false
     });
-    turnO = true;
+    // turnO = true;
 }
 
