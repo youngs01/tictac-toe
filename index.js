@@ -45,11 +45,14 @@ boxes.forEach((box) => {
         }
         box.disabled = true;
         winCheck();
-         toggleBorderColor();
+        toggleBorderColor();
     });
 });
 
+
+/// check the game winner
 function winCheck() {
+    let gameWon = false;
     for (let pattern of gamePattern) {
         let pat1 = boxes[pattern[0]].innerHTML;
         let pat2 = boxes[pattern[1]].innerHTML;
@@ -59,11 +62,11 @@ function winCheck() {
             if (pat1 == pat2 && pat2 == pat3) {
                 resultElement.innerText = `Winner is ${pat1}`;
                 if (pat1 === "X") {
-                    console.log("x");
+                    // console.log("x");
                     let currentScorex = parseInt(scorex.textContent)
                     scorex.textContent = currentScorex + 1;
                 } else {
-                    console.log("bye");
+                    // console.log("bye");
                     let currentScoreo = parseInt(score0.textContent)
                     score0.textContent = currentScoreo + 1;
                 }
@@ -73,8 +76,21 @@ function winCheck() {
             }
         }
     }
+
+    if (!gameWon) {
+        let allBox = true;
+        boxes.forEach((box) => {
+            if (box.innerHTML === "") {
+                allBox = false;
+            }
+        })
+        if (allBox) {
+            resultElement.textContent = "Its a tie"
+        }
+    }
 }
 
+// Score reset button 
 document.addEventListener("click", function (click) {
     if (click.target.classList.contains("fa-xmark")) {
         score0.textContent = 0;
@@ -84,18 +100,16 @@ document.addEventListener("click", function (click) {
             resultElement.innerText = "Winner is"
             box.disabled = false
         });
-        // turnO = true;
-
     }
 });
 
 
+/// Reset button 
 function reset() {
     boxes.forEach((box) => {
         box.innerText = "";
         resultElement.innerText = "winner is"
         box.disabled = false
     });
-    // turnO = true;
 }
 
